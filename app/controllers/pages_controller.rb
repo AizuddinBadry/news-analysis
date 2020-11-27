@@ -1,13 +1,17 @@
 class PagesController < ApplicationController
+  before_action :get_user
   before_action :user_is_logged_in?, except: :home
 
   def home
-    puts(session[:oktastate])
+  end
+
+  def dashboard
+  end
+
+  private
+
+  def get_user
     @current_user = User.find_by(uid: session[:oktastate])
   end
 
-  def account
-    @current_user = User.find_by(uid: session[:oktastate])
-    puts(session[:oktastate])
-  end
 end
