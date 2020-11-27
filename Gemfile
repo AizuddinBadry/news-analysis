@@ -25,12 +25,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#General use
 gem 'omniauth-oktaoauth'
 gem 'activerecord-session_store'
 gem 'figaro'
 gem  'devise'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'jquery-rails'
+gem 'slim'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
