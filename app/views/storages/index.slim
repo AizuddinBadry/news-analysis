@@ -1,0 +1,18 @@
+h1 Storage
+
+= form_for(:storages, url:storages_path) do |f|
+    = f.label :pdf
+    = f.file_field :pdf
+    = f.submit 'Save'
+
+table
+    th
+        td #
+        td Name
+        td Action
+    - @storages.each_with_index do |storage, index|
+        tr
+            td #{index + 1}
+            td = storage.name
+            td = link_to 'Delete', storage_path(storage.id), method: :delete, data: {confirm: 'Are you sure?'}
+        
