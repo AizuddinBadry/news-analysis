@@ -11,7 +11,6 @@ class ScrapesController < ApplicationController
 
     def show
         @contents = Scrape.where('content ilike ?', "%#{params[:k]}%")
-        
     end
 
     private

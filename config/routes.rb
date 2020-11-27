@@ -1,5 +1,7 @@
 
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
