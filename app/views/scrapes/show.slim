@@ -1,0 +1,17 @@
+h1 = "#{@scrape.name} Insight"
+
+= link_to 'Back', scrapes_path
+- @contents.each do |content|
+    h3 Content
+    div.context = content.content.html_safe
+
+    div
+        b = "Page : #{content.page_number}"
+    div
+        h5 Parameter Score
+        - JSON.parse(content.categories).each do |score|
+            ul
+                li = "#{score['name']} : #{score['score']}"
+        
+
+= render partial: '/scrapes/mark.js', locals: {keyword: params[:k]}

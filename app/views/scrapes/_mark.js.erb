@@ -1,0 +1,14 @@
+<script>
+  var instance = new Mark(document.querySelectorAll("div.context"));
+    // Read the keyword
+    var keyword = "<%= keyword %>";
+    
+    var options = {
+      'element': 'mark',
+      "separateWordSearch": true,
+      "diacritics": true,
+    };
+
+    instance.mark(keyword, options);
+
+</script>

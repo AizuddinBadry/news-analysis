@@ -33,6 +33,9 @@ gem  'devise'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'jquery-rails'
 gem 'slim'
+gem 'pdf-reader', require: 'pdf-reader'
+gem 'aws-sdk-comprehend'
+gem 'aws-sdk-s3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
