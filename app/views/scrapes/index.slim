@@ -1,0 +1,23 @@
+h1 Data list
+
+= link_to 'Home', pages_dashboard_path
+
+= form_for :keywords, url: scrapes_path, method: :get do |f|
+    = f.text_field :k
+    = f.submit 'Analyze keywords'
+table
+    th
+        td #
+        td Name
+        td Source
+        td Action
+    - @scrapes.each_with_index do |scrape, index|
+        tr
+            td #{index + 1}.
+            td = scrape.name
+            td = scrape.source
+            td 
+                - if params[:keywords].nil?
+                    span Please search your keyword
+                - else
+                    = link_to 'Insight', scrape_path(id:scrape.id, k: params[:keywords][:k])       

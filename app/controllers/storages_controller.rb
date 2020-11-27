@@ -25,11 +25,9 @@ class StoragesController < ApplicationController
         if @storage.update scraped: true
             pdf = ActiveStorage::Blob.service.send(:path_for, @storage.pdf.key) #get pdf file from local storage
             reader = PDF::Reader.new(pdf) #read pdf file
-            content = ""
-            reader.pages.each do |page|
-                content << page.text
+            reader.pages.each_with_index do |page, index|
+                Scrape.create name: @storage.name, source: 'file', source_name: @storage.name , content: ActionController::Base.helpers.strip_tags(page.text.gsub(/\n\n+/, "")), page_number: index + 1
             end
-            Scrape.create name: @storage.name, source: 'file', content: ActionController::Base.helpers.strip_tags(content)
             redirect_to request.referrer
         end
     end
