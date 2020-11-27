@@ -1,5 +1,5 @@
 class StoragesController < ApplicationController
-    before_action :get_storage, only: [:destroy]
+    before_action :get_storage, only: [:destroy, :extract]
 
     def index
         @storages = Storage.all
@@ -21,9 +21,23 @@ class StoragesController < ApplicationController
         end
     end
 
+    def extract
+        if @storage.update scraped: true
+            pdf = ActiveStorage::Blob.service.send(:path_for, @storage.pdf.key) #get pdf file from local storage
+            reader = PDF::Reader.new(pdf) #read pdf file
+            content = ""
+            reader.pages.each do |page|
+                content << page.text
+            end
+            Scrape.create name: @storage.name, source: 'file', content: ActionController::Base.helpers.strip_tags(content)
+            redirect_to request.referrer
+        end
+    end
+
     private
 
     def get_storage
+        params[:id] ||= params[:storage_id]
         @storage = Storage.find(params[:id])
     end
 
