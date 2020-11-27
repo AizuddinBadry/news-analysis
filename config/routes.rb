@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  resources :scrapes
   resources :storages
   get 'sessions/new'
   get 'sessions/create'
