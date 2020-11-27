@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'omniauth-oktaoauth'
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -24,7 +25,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'aizuddin@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -37,7 +38,6 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-  require 'omniauth-oktaoauth'
   config.omniauth(:oktaoauth,
                 ENV['OKTA_CLIENT_ID'],
                 ENV['OKTA_CLIENT_SECRET'],

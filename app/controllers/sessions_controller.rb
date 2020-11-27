@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:usersession] = nil
-    @current_user = session[:usersession]
-    @session = session[:usersession]
+    session[:oktastate] = nil
+    @current_user = session[:oktastate]
+    @session = session[:oktastate]
     redirect_to root_path
   end
 end

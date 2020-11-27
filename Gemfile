@@ -30,6 +30,7 @@ gem 'activerecord-session_store'
 gem 'figaro'
 gem  'devise'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
