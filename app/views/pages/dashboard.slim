@@ -1,2 +1,7 @@
 h1 Dashboard
 = p "Welcome, #{@current_user.email}"
+
+= form_for(:storages, url:storages_path) do |f|
+    = f.label :pdf
+    = f.file_field :pdf
+    = f.submit 'Save'
