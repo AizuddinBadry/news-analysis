@@ -37,6 +37,10 @@ gem 'pdf-reader', require: 'pdf-reader'
 gem 'aws-sdk-comprehend'
 gem 'aws-sdk-s3'
 
+#Background job
+gem 'sidekiq'
+gem 'redis'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
