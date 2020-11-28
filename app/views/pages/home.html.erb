@@ -1,8 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<% if @current_user %>
-<h1><%=@current_user.email %></h1>
-<%= link_to "logout", ENV['OKTA_URL'] + "/login/signout?fromURI=http://localhost:3000/sessions/destroy", class: "item" %>
-<% else %>
-<%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
-<% end %>
+
+<div class="global-container">
+	<div class="card login-form">
+		<div class="card-body">
+			<h3 class="card-title text-center">Welcome !</h3>
+			<div class="card-text text-center">
+				<% if @current_user %>
+				<%= link_to "Dashboard", pages_dashboard_path , class: "item" %>
+				<%= link_to "Logout", ENV['OKTA_URL'] + "/login/signout?fromURI=http://localhost:3000/sessions/destroy", class: "item" %>
+				<% else %>
+				<%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

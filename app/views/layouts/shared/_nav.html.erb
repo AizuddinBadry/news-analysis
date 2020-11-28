@@ -1,0 +1,16 @@
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+        <% if @current_user %>
+            <li class="nav-item active">
+                <%= link_to "Dashboard", pages_dashboard_path , class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Storage", storages_path , class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to "Data", scrapes_path , class: "nav-link" %>
+            </li>
+        <% end %>
+    </ul>
+    <%= link_to "Logout", ENV['OKTA_URL'] + "/login/signout?fromURI=http://localhost:3000/sessions/destroy", class: "nav-link" if @current_user %>
+</div>

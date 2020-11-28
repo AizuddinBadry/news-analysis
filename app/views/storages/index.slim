@@ -1,24 +1,27 @@
-h1 Storage
+.row.m-2
+    .col-lg-12
+        .card
+            .card-body
+                h1 Storage
 
-= link_to 'Home', pages_dashboard_path
-= form_for(:storages, url:storages_path) do |f|
-    = f.label :pdf
-    = f.file_field :pdf
-    = f.submit 'Save'
-
-table
-    th
-        td #
-        td Name
-        td Action
-    - @storages.each_with_index do |storage, index|
-        tr
-            td #{index + 1}
-            td = storage.name
-            td 
-                = link_to 'Delete', storage_path(storage.id), method: :delete, data: {confirm: 'Are you sure?'}
-                - if storage.scraped?
-                    span Scraped
-                - else
-                    = link_to 'Scrape', storage_extract_path(storage.id), method: :post, data: {confirm: 'Are you sure? You cannot undo this action.'}
+                = form_for(:storages, url:storages_path) do |f|
+                    = f.file_field :pdf
+                    = f.submit 'Save'
+                span.badge.badge-warning.mt-3 Note we only accept .pdf file at the moment.
+                .table-responsive.pt-5
+                    table.table
+                        tr
+                            th #
+                            th Name
+                            th Action
+                        - @storages.each_with_index do |storage, index|
+                            tr
+                                td #{index + 1}.
+                                td = storage.name
+                                td 
+                                    - if storage.scraped?
+                                        button.btn.btn-secondary.mr-1 Scraped
+                                    - else
+                                        = link_to 'Scrape', storage_extract_path(storage.id), method: :post, data: {confirm: 'Are you sure? You cannot undo this action.'}, class: 'btn btn-primary mr-1'
+                                    = link_to 'Delete', storage_path(storage.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
         
