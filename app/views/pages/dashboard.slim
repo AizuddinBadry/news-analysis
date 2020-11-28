@@ -1,5 +1,6 @@
-h1 Dashboard
-= p "Welcome, #{@current_user.email}"
-
-div = link_to 'Storage', storages_path
-div = link_to 'Data', scrapes_path
+.row.m-2
+    .col-lg-12
+        .card
+            .card-body
+                h1 Dashboard
+                = p "Welcome, #{@current_user.email}"

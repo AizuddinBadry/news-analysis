@@ -1,23 +1,28 @@
-h1 Data list
+.row.m-2
+    .col-lg-12
+        .card
+            .card-body
+                h1 Data list
 
-= link_to 'Home', pages_dashboard_path
-
-= form_for :keywords, url: scrapes_path, method: :get do |f|
-    = f.text_field :k
-    = f.submit 'Analyze keywords'
-table
-    th
-        td #
-        td Name
-        td Source
-        td Action
-    - @scrapes.each_with_index do |scrape, index|
-        tr
-            td #{index + 1}.
-            td = scrape.name
-            td = scrape.source
-            td 
-                - if params[:keywords].nil?
-                    span Please search your keyword
-                - else
-                    = link_to 'Insight', scrape_path(id:scrape.id, k: params[:keywords][:k])       
+                = form_for :keywords, url: scrapes_path, method: :get do |f|
+                    = f.text_field :k
+                    = f.submit 'Analyze keywords'
+                span.badge.badge-warning.mt-3 Only 1 keyword allowed at the moment.
+                .table-responsive.pt-5
+                    table.table
+                        tr
+                            th #
+                            th Name
+                            th Source
+                            th Action
+                        - @scrapes.each_with_index do |scrape, index|
+                            tr
+                                td #{index + 1}.
+                                td = scrape.name
+                                td = scrape.source
+                                td 
+                                    - if params[:keywords].nil?
+                                        button.btn.btn-secondary Please analyze keywords first
+                                    - else
+                                        = link_to 'Insight', scrape_path(id:scrape.id, k: params[:keywords][:k]), class: 'btn btn-primary'
+        
