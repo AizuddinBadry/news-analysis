@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'omniauth-oktaoauth'
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -38,6 +37,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  require 'omniauth-oktaoauth'
   config.omniauth(:oktaoauth,
                 ENV['OKTA_CLIENT_ID'],
                 ENV['OKTA_CLIENT_SECRET'],
