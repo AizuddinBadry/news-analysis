@@ -2,7 +2,7 @@ class TextAnalysisJob < ApplicationJob
     queue_as :default
 
     def perform(storage, fastsento_api)
-            pdf = ActiveStorage::Blob.service.send(:path_for, storage.pdf.key) #get pdf file from local storage
+            pdf = open(ActiveStorage::Blob.service.send(:path_for, storage.pdf.key)) #get pdf file from local storage
             reader = PDF::Reader.new(pdf) #read pdf file
             
             reader.pages.each_with_index do |page, index|
