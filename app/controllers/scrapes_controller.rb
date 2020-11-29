@@ -10,7 +10,7 @@ class ScrapesController < ApplicationController
     end
 
     def show
-        @contents = Scrape.where('content ilike ?', "%#{params[:k]}%")
+        @contents = Scrape.where('content ilike ?', "%#{params[:k]}%").where(name: @scrape.name)
     end
 
     private

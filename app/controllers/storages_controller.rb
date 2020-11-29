@@ -23,7 +23,7 @@ class StoragesController < ApplicationController
 
     def extract
         if @storage.update scraped: true
-            AwsComprehendJob.perform_later(@storage)
+            TextAnalysisJob.perform_later(@storage, ENV['FASTSENTO_API'])
             redirect_to request.referrer
         end
     end
