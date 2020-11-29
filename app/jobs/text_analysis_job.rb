@@ -2,7 +2,7 @@ class TextAnalysisJob < ApplicationJob
     queue_as :default
 
     def perform(storage, fastsento_api)
-            pdf = open(storage.pdf.public_url) #get pdf file from local storage
+            pdf = open(storage.pdf.url) #get pdf file from local storage
             reader = PDF::Reader.new(pdf) #read pdf file
             
             reader.pages.each_with_index do |page, index|
