@@ -39,6 +39,7 @@ gem 'httparty'
 #Background job
 gem 'sidekiq', '5.2.7'
 gem 'redis'
+gem 'aws-sdk-s3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
