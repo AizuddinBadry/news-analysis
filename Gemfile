@@ -37,7 +37,7 @@ gem 'pdf-reader', require: 'pdf-reader'
 gem 'httparty'
 
 #Background job
-gem 'sidekiq'
+gem 'sidekiq', '5.2.7'
 gem 'redis'
 
 # Reduces boot times through caching; required in config/boot.rb
