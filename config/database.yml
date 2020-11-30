@@ -80,7 +80,7 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV['NEWS_ANALYSIS_DATABASE_HOST']%>
+  host: srv-captain--postgres-db
   database: postgres
   username: <%= ENV['NEWS_ANALYSIS_DATABASE_USERNAME'] %>
   password: <%= ENV['NEWS_ANALYSIS_DATABASE_PASSWORD'] %>
