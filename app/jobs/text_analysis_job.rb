@@ -2,7 +2,7 @@ class TextAnalysisJob < ApplicationJob
     queue_as :default
 
     def perform(storage, fastsento_api)
-            pdf = ActiveStorage::Blob.service.send(:path_for, storage.pdf.key) #get pdf file from local storage
+            pdf = open(ActiveStorage::Blob.service.send(:path_for, storage.pdf.key)) #get pdf file from local storage
             reader = PDF::Reader.new(pdf) #read pdf file
             
             reader.pages.each_with_index do |page, index|
@@ -11,7 +11,7 @@ class TextAnalysisJob < ApplicationJob
                 resp = HTTParty.get("http://nlp.apps.fasttrade.my", 
                                     query: { text: content, label: 'industry performance,issues,market potential,challenges' },
                                     headers: {"Authorization" => "#{fastsento_api}"}) unless content.bytesize == 0
-                puts ">>>>>WOI #{resp.parsed_response}" unless content.bytesize == 0
+                puts ">>>> #{resp.parsed_response}" unless content.bytesize == 0
                 if !resp.nil?
                     scrape = Scrape.create name: storage.name, source: 'file', source_name: storage.name, 
                                             content: content, 
