@@ -9,8 +9,9 @@ RUN bundle install
 COPY . /myapp
 
 # Add a script to be executed every time the container starts.
-RUN bundle exec sidekiq -q default
+RUN rake assets:precompile
 ENV RAILS_ENV production
+RUN bundle exec sidekiq -q default
 RUN rake db:create
 RUN rake db:migrate
 
