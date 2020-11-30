@@ -14,6 +14,8 @@ RUN chmod +x /usr/bin/entrypoint.sh
 RUN bundle exec sidekiq -q default
 ENTRYPOINT ["entrypoint.sh"]
 ENV RAILS_ENV production
+RUN rake db:create
+RUN rake db:migrate
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
