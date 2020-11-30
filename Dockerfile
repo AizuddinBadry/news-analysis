@@ -10,9 +10,7 @@ COPY . /myapp
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
 RUN bundle exec sidekiq -q default
-ENTRYPOINT ["entrypoint.sh"]
 ENV RAILS_ENV production
 RUN rake db:create
 RUN rake db:migrate
