@@ -80,7 +80,7 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV['NEWS_ANALYSIS_DATABASE_HOST'']%>
+  host: <%= ENV['NEWS_ANALYSIS_DATABASE_HOST']%>
   database: news_analysis_production
   username: <%= ENV['NEWS_ANALYSIS_DATABASE_USERNAME'] %>
   password: <%= ENV['NEWS_ANALYSIS_DATABASE_PASSWORD'] %>
