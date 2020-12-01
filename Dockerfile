@@ -3,7 +3,7 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client redis-serv
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-RUN redis-server -y --daemonize
+RUN redis-server --daemonize
 RUN gem install bundler -v 2.0.2
 RUN gem update --system
 RUN bundle install
